@@ -1,0 +1,134 @@
+[
+  {
+    "course_name": "Mobile Phone Hardware Repair Technician",
+    "sector": "Electronics",
+    "nsqf_level": 4,
+    "minimum_education": "10th",
+    "skills": ["basic electrical work", "soldering", "troubleshooting"],
+    "interests": ["mobile repair", "electronics", "gadgets"],
+    "employment_type": "self_employment",
+    "demand": "high",
+    "skill_gaps": ["soldering", "component-level diagnosis", "customer handling"]
+  },
+  {
+    "course_name": "Domestic Electrician",
+    "sector": "Electrical",
+    "nsqf_level": 4,
+    "minimum_education": "10th",
+    "skills": ["basic electrical work", "wiring", "safety"],
+    "interests": ["electrical work", "home repair", "wiring"],
+    "employment_type": "both",
+    "demand": "high",
+    "skill_gaps": ["house wiring", "electrical safety", "fault finding"]
+  },
+  {
+    "course_name": "Computer Hardware and Networking Assistant",
+    "sector": "IT",
+    "nsqf_level": 4,
+    "minimum_education": "12th",
+    "skills": ["computer basics", "troubleshooting"],
+    "interests": ["computers", "IT", "mobile repair"],
+    "employment_type": "wage_employment",
+    "demand": "high",
+    "skill_gaps": ["hardware assembly", "basic networking", "OS installation"]
+  },
+  {
+    "course_name": "Self Employed Tailor",
+    "sector": "Apparel/Tailoring",
+    "nsqf_level": 4,
+    "minimum_education": "8th",
+    "skills": ["stitching", "measurement"],
+    "interests": ["tailoring", "fashion", "garments"],
+    "employment_type": "self_employment",
+    "demand": "medium",
+    "skill_gaps": ["pattern making", "machine operation", "finishing"]
+  },
+  {
+    "course_name": "Fruit and Vegetable Processing Technician",
+    "sector": "Food Processing",
+    "nsqf_level": 4,
+    "minimum_education": "10th",
+    "skills": ["food hygiene", "sorting"],
+    "interests": ["food processing", "farming", "value addition"],
+    "employment_type": "self_employment",
+    "demand": "medium",
+    "skill_gaps": ["food safety", "packaging", "quality checking"]
+  },
+  {
+    "course_name": "Assistant Beauty Therapist",
+    "sector": "Beauty & Wellness",
+    "nsqf_level": 3,
+    "minimum_education": "10th",
+    "skills": ["grooming", "customer service"],
+    "interests": ["beauty", "wellness", "salon work"],
+    "employment_type": "both",
+    "demand": "high",
+    "skill_gaps": ["facial treatments", "hygiene standards", "client consultation"]
+  },
+  {
+    "course_name": "Four Wheeler Service Technician",
+    "sector": "Automotive",
+    "nsqf_level": 4,
+    "minimum_education": "10th",
+    "skills": ["basic mechanical work", "tool handling"],
+    "interests": ["vehicles", "automobile repair", "engines"],
+    "employment_type": "wage_employment",
+    "demand": "high",
+    "skill_gaps": ["engine servicing", "vehicle diagnostics", "workshop safety"]
+  },
+  {
+    "course_name": "Organic Grower",
+    "sector": "Agriculture",
+    "nsqf_level": 4,
+    "minimum_education": "8th",
+    "skills": ["farming", "crop care"],
+    "interests": ["agriculture", "farming", "organic food"],
+    "employment_type": "self_employment",
+    "demand": "medium",
+    "skill_gaps": ["organic certification basics", "soil health", "market linkage"]
+  },
+  {
+    "course_name": "Assistant Mason",
+    "sector": "Construction",
+    "nsqf_level": 3,
+    "minimum_education": "8th",
+    "skills": ["manual work", "measurement"],
+    "interests": ["construction", "building work"],
+    "employment_type": "wage_employment",
+    "demand": "high",
+    "skill_gaps": ["brick laying", "site safety", "plastering basics"]
+  },
+  {
+    "course_name": "Retail Sales Associate",
+    "sector": "Retail",
+    "nsqf_level": 4,
+    "minimum_education": "10th",
+    "skills": ["communication", "customer service"],
+    "interests": ["sales", "retail", "customer interaction"],
+    "employment_type": "wage_employment",
+    "demand": "high",
+    "skill_gaps": ["billing", "product knowledge", "store operations"]
+  },
+  {
+    "course_name": "LED Light Repair Technician",
+    "sector": "Electronics",
+    "nsqf_level": 4,
+    "minimum_education": "10th",
+    "skills": ["basic electrical work", "electronics basics"],
+    "interests": ["electronics", "electrical work", "repair"],
+    "employment_type": "self_employment",
+    "demand": "medium",
+    "skill_gaps": ["circuit testing", "driver replacement", "quality checking"]
+  },
+  {
+    "course_name": "Field Technician - Computing and Peripherals",
+    "sector": "IT",
+    "nsqf_level": 4,
+    "minimum_education": "12th",
+    "skills": ["computer basics", "customer handling"],
+    "interests": ["computers", "repair", "IT support"],
+    "employment_type": "both",
+    "demand": "medium",
+    "skill_gaps": ["printer servicing", "field visits", "ticket handling"]
+  }
+]
