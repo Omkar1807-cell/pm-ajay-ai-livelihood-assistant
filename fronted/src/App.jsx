@@ -15,16 +15,28 @@ const PAGES = {
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home')
-  const Page = PAGES[currentPage] ?? Home
+  const [language, setLanguage] = useState('en')
+
+  const Page = PAGES[currentPage]
 
   return (
     <div className="app-shell">
-      <Navbar currentPage={currentPage} onNavigate={setCurrentPage} />
+      <Navbar
+        currentPage={currentPage}
+        onNavigate={setCurrentPage}
+        language={language}
+      />
+
       <main className="app-main">
-        <Page onNavigate={setCurrentPage} />
+        <Page
+          language={language}
+          setLanguage={setLanguage}
+          onNavigate={setCurrentPage}
+        />
       </main>
+
       <footer className="app-footer">
-        <p>PM-AJAY Saathi · AI livelihood and skill recommendation assistant</p>
+        PM-AJAY Saathi · AI livelihood and skill recommendation assistant
       </footer>
     </div>
   )
