@@ -532,3 +532,198 @@
 >
   🎤
 </button>
+/* ================================
+   LOGIN SYSTEM
+================================ */
+
+.login-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.login-section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.login-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.login-option {
+  flex: 1;
+  min-width: 220px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  background: var(--surface);
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.login-option-icon {
+  font-size: 1.8rem;
+}
+
+.beneficiary-option {
+  border-left: 4px solid #2563eb;
+}
+
+.officer-option {
+  border-left: 4px solid #7c3aed;
+}
+
+
+/* ================================
+   LOGIN PAGES
+================================ */
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 520px;
+  padding: 2rem;
+}
+
+.back-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--primary);
+  font: inherit;
+  margin-bottom: 1.5rem;
+  padding: 0;
+}
+
+.login-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-icon {
+  display: block;
+  font-size: 3rem;
+  margin-bottom: 0.8rem;
+}
+
+.login-heading h1 {
+  margin-bottom: 0.5rem;
+}
+
+.login-heading p {
+  color: var(--muted);
+}
+
+.login-form {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.mobile-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mobile-input span {
+  padding: 0.8rem;
+  background: #f3f4f6;
+  border-right: 1px solid var(--border);
+}
+
+.mobile-input input {
+  border: none;
+  border-radius: 0;
+}
+
+.form-error {
+  color: #dc2626;
+  font-size: 0.9rem;
+}
+
+.login-submit {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.login-note,
+.demo-otp,
+.demo-credentials,
+.forgot-message {
+  margin-top: 1.2rem;
+  padding: 0.9rem;
+  border-radius: 8px;
+  background: #f8fafc;
+  font-size: 0.9rem;
+}
+
+.otp-mobile {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--muted);
+}
+
+.forgot-password {
+  display: block;
+  margin: 1rem auto 0;
+  border: none;
+  background: transparent;
+  color: var(--primary);
+  cursor: pointer;
+  font: inherit;
+}
+
+@media (max-width: 600px) {
+  .login-options {
+    flex-direction: column;
+  }
+
+  .login-option {
+    width: 100%;
+  }
+
+  .login-card {
+    padding: 1.25rem;
+  }
+}

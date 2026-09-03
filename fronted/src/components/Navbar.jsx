@@ -1,41 +1,76 @@
-const NAV_ITEMS = [
-  { id: 'home', label: 'Home' },
-  { id: 'assessment', label: 'Assessment' },
-  { id: 'recommendations', label: 'Recommendations' },
-  { id: 'dashboard', label: 'Dashboard' },
-]
-
-function Navbar({ currentPage, onNavigate }) {
+function Navbar({ currentPage, onNavigate, userRole }) {
   return (
     <header className="navbar">
-      <div className="navbar-inner">
-        <button
-          type="button"
-          className="brand"
-          onClick={() => onNavigate('home')}
-        >
-          <span className="brand-mark" aria-hidden="true">
-            PM
-          </span>
-          <span className="brand-text">
-            <strong>PM-AJAY Saathi</strong>
-            <span>Livelihood Assistant</span>
-          </span>
-        </button>
+      <div
+        className="brand"
+        onClick={() => onNavigate('home')}
+        style={{ cursor: 'pointer' }}
+      >
+        <div className="brand-mark">PM</div>
 
-        <nav className="nav-links" aria-label="Main">
-          {NAV_ITEMS.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              className={currentPage === item.id ? 'nav-link active' : 'nav-link'}
-              onClick={() => onNavigate(item.id)}
-            >
-              {item.label}
-            </button>
-          ))}
-        </nav>
+        <div>
+          <strong>PM-AJAY Saathi</strong>
+          <span>Livelihood Assistant</span>
+        </div>
       </div>
+
+      <nav className="nav-links">
+        {/* Login करण्यापूर्वी फक्त Home */}
+
+        {!userRole && (
+          <button
+            type="button"
+            className={currentPage === 'home' ? 'nav-link active' : 'nav-link'}
+            onClick={() => onNavigate('home')}
+          >
+            Home
+          </button>
+        )}
+
+        {/* Beneficiary Login नंतर */}
+        {userRole === 'beneficiary' && (
+          <>
+            <button
+              type="button"
+              className={
+                currentPage === 'assessment'
+                  ? 'nav-link active'
+                  : 'nav-link'
+              }
+              onClick={() => onNavigate('assessment')}
+            >
+              Assessment
+            </button>
+
+            <button
+              type="button"
+              className={
+                currentPage === 'recommendations'
+                  ? 'nav-link active'
+                  : 'nav-link'
+              }
+              onClick={() => onNavigate('recommendations')}
+            >
+              Recommendations
+            </button>
+          </>
+        )}
+
+        {/* Officer Login नंतर */}
+        {userRole === 'officer' && (
+          <button
+            type="button"
+            className={
+              currentPage === 'dashboard'
+                ? 'nav-link active'
+                : 'nav-link'
+            }
+            onClick={() => onNavigate('dashboard')}
+          >
+            Dashboard
+          </button>
+        )}
+      </nav>
     </header>
   )
 }
