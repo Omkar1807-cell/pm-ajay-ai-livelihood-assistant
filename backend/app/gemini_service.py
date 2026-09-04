@@ -1,5 +1,6 @@
 import os
 import time
+import json
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -68,3 +69,66 @@ def generate_reply(user_message: str) -> str:
         print("Gemini error:", type(e).__name__)
         print(error_text)
         return "Sorry, I could not get a reply from Gemini right now. Please try again."
+
+def extract_profile(conversation: str) -> dict:
+    """Extract beneficiary profile information from a conversation."""
+
+    api_key = os.getenv("GEMINI_API_KEY")
+
+    if not api_key:
+        return {"error": "Gemini API key is missing."}
+
+    extraction_prompt = f"""
+You are extracting information for a PM-AJAY livelihood assessment.
+
+Read the conversation below and extract only information that the beneficiary
+has actually provided.
+
+Return ONLY valid JSON. Do not use markdown.
+
+Use exactly these fields:
+{{
+  "education": "",
+  "location": "",
+  "occupation": "",
+  "traditional_occupation": "",
+  "skills": [],
+  "interests": [],
+  "experience": "",
+  "employment_preference": "",
+  "mobility_constraints": "",
+  "language": ""
+}}
+
+Rules:
+- Do not invent information.
+- If information is missing, use an empty string or empty list.
+- Keep skills and interests as arrays.
+- Detect whether the conversation is in Marathi, Hindi, or English.
+- Keep the meaning of the beneficiary's answers.
+- employment_preference should preferably be "self_employment",
+  "wage_employment", or "".
+
+Conversation:
+{conversation}
+"""
+
+    try:
+        client = genai.Client(api_key=api_key)
+
+        response = client.models.generate_content(
+            model=MODEL_NAME,
+            contents=extraction_prompt,
+        )
+
+        text = response.text.strip()
+
+        # Remove markdown code fences if Gemini adds them
+        if text.startswith("```"):
+            text = text.replace("```json", "").replace("```", "").strip()
+
+        return json.loads(text)
+
+    except Exception as e:
+        print("Profile extraction error:", type(e).__name__)
+        return {"error": "Could not extract profile right now."}
