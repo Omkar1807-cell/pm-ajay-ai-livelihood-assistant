@@ -8,6 +8,10 @@ import Dashboard from './pages/Dashboard.jsx'
 import BeneficiaryLogin from './pages/BeneficiaryLogin.jsx'
 import OTPVerification from './pages/OTPVerification.jsx'
 import OfficerLogin from './pages/OfficerLogin.jsx'
+import MyProfile from './pages/MyProfile.jsx'
+import EducationSkills from './pages/EducationSkills.jsx'
+import InterestsGoals from './pages/InterestsGoals.jsx'
+import TrainingJourney from './pages/TrainingJourney.jsx'
 
 import './App.css'
 
@@ -16,9 +20,16 @@ const PAGES = {
   beneficiaryLogin: BeneficiaryLogin,
   otpVerification: OTPVerification,
   officerLogin: OfficerLogin,
+
   assessment: Assessment,
   recommendations: Recommendations,
+  trainingJourney: TrainingJourney,
+
   dashboard: Dashboard,
+
+  myProfile: MyProfile,
+  educationSkills: EducationSkills,
+  interestsGoals: InterestsGoals,
 }
 
 function App() {
@@ -26,14 +37,38 @@ function App() {
   const [language, setLanguage] = useState('en')
   const [userRole, setUserRole] = useState(null)
 
-  // Beneficiary information store करण्यासाठी
-  const [userData, setUserData] = useState(null)
+  const [userData, setUserData] = useState({
+    name: 'User Name',
+    beneficiaryId: 'PM00125',
+    mobile: '',
+    location: 'Pune, Maharashtra',
+
+    education: {
+      highestQualification: '',
+      fieldOfStudy: '',
+      skills: [],
+      workExperience: '',
+    },
+
+    interestsGoals: {
+      interests: [],
+      careerGoal: '',
+    },
+  })
 
   const handleNavigate = (page) => {
-    // Assessment आणि Recommendations साठी login आवश्यक
+    // Login नसल्यास protected pages बंद
     if (
-      ['assessment', 'recommendations'].includes(page) &&
-      userRole !== 'beneficiary'
+      [
+        'assessment',
+        'recommendations',
+        'trainingJourney',
+        'myProfile',
+        'educationSkills',
+        'interestsGoals',
+        'dashboard',
+      ].includes(page) &&
+      !userRole
     ) {
       setCurrentPage('home')
       return
@@ -45,26 +80,37 @@ function App() {
       return
     }
 
+    // Beneficiary pages फक्त beneficiary साठी
+    if (
+      [
+        'assessment',
+        'recommendations',
+        'trainingJourney',
+        'myProfile',
+        'educationSkills',
+        'interestsGoals',
+      ].includes(page) &&
+      userRole !== 'beneficiary'
+    ) {
+      setCurrentPage('home')
+      return
+    }
+
     setCurrentPage(page)
   }
 
   const handleLogin = (role) => {
     setUserRole(role)
 
-    // Officer → Dashboard
     if (role === 'officer') {
       setCurrentPage('dashboard')
-    }
-
-    // Beneficiary → Assessment
-    if (role === 'beneficiary') {
+    } else {
       setCurrentPage('assessment')
     }
   }
 
   const handleLogout = () => {
     setUserRole(null)
-    setUserData(null)
     setCurrentPage('home')
   }
 
@@ -76,7 +122,9 @@ function App() {
         currentPage={currentPage}
         onNavigate={handleNavigate}
         language={language}
+        setLanguage={setLanguage}
         userRole={userRole}
+        userData={userData}
         onLogout={handleLogout}
       />
 
