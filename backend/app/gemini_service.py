@@ -20,7 +20,7 @@ SYSTEM_INSTRUCTION = (
     "First collect information."
 )
 
-MODEL_NAME = "gemini-3.7-flash"
+MODEL_NAME = "gemini-3.5-flash-lite"
 
 
 def generate_reply(user_message: str) -> str:
@@ -116,18 +116,38 @@ Conversation:
     try:
         client = genai.Client(api_key=api_key)
 
-        response = client.models.generate_content(
-            model=MODEL_NAME,
-            contents=extraction_prompt,
-        )
+        response = None
+
+        for attempt in range(3):
+            try:
+                response = client.models.generate_content(
+                    model=MODEL_NAME,
+                    contents=extraction_prompt,
+                )
+                break
+
+            except Exception as e:
+                error_text = str(e)
+
+                if "ServerError" in error_text or "503" in error_text:
+                    if attempt < 2:
+                        import time
+                        time.sleep(2 * (attempt + 1))
+                        continue
+
+                raise
+
+        if response is None:
+            raise RuntimeError("Gemini did not return a response")
 
         text = response.text.strip()
 
-        # Remove markdown code fences if Gemini adds them
         if text.startswith("```"):
             text = text.replace("```json", "").replace("```", "").strip()
 
-        return json.loads(text)
+        profile = json.loads(text)
+
+        return profile
 
     except Exception as e:
         print("Profile extraction error:", type(e).__name__)
